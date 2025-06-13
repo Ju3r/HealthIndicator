@@ -1,33 +1,27 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthActionSimulator : MonoBehaviour
+[RequireComponent(typeof(Button))]
+public abstract class HealthActionSimulator : MonoBehaviour
 {
-    [SerializeField] private Health _health;
-    [SerializeField] private Button _healingButton;
-    [SerializeField] private Button _damageButton;
-    [SerializeField] private float _healingValue = 25;
-    [SerializeField] private float _damageValue = 25;
+    [SerializeField] protected Health Health;
+
+    private Button _button;
+
+    private void Awake()
+    {
+        _button = GetComponent<Button>();
+    }
 
     private void OnEnable()
     {
-        _healingButton.onClick.AddListener(Healing);
-        _damageButton.onClick.AddListener(TakeDamage);
+        _button.onClick.AddListener(Affect);
     }
 
     private void OnDisable()
     {
-        _healingButton.onClick.RemoveListener(Healing);
-        _damageButton.onClick.RemoveListener(TakeDamage);
+        _button.onClick.RemoveListener(Affect);
     }
 
-    public void Healing()
-    {
-        _health.Add(_healingValue);
-    }
-
-    public void TakeDamage()
-    {
-        _health.TakeDamage(_damageValue);
-    }
+    public abstract void Affect();
 }

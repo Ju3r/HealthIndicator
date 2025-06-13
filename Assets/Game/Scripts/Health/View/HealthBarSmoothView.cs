@@ -15,7 +15,7 @@ public class HealthBarSmoothView : HealthBarView
         }
 
         float _targetValue = Health.Value / Health.MaxValue;
-        _smoothTransitionCoroutine = StartCoroutine(SmoothTransition(_slider.value, _targetValue));
+        _smoothTransitionCoroutine = StartCoroutine(SmoothTransition(Slider.value, _targetValue));
     }
 
     private IEnumerator SmoothTransition(float startValue, float endValue)
@@ -25,13 +25,13 @@ public class HealthBarSmoothView : HealthBarView
 
         while (timeElapsed < duration)
         {
-            _slider.value = Mathf.Lerp(startValue, endValue, timeElapsed / duration);
+            Slider.value = Mathf.Lerp(startValue, endValue, timeElapsed / duration);
             timeElapsed += Time.deltaTime;
 
             yield return null;
         }
 
-        _slider.value = endValue;
+        Slider.value = endValue;
         _smoothTransitionCoroutine = null;
     }
 }

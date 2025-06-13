@@ -20,9 +20,7 @@ public class Health : MonoBehaviour
         if (value <= 0)
             return;
 
-        Value = Value + value;
-        Value = Mathf.Clamp(Value, _minValue, MaxValue);
-
+        Value = Mathf.Clamp(Value + value, _minValue, MaxValue);
         Changed?.Invoke();
     }
 
@@ -31,9 +29,7 @@ public class Health : MonoBehaviour
         if (damage <= 0)
             return;
 
-        Value = Value - damage;
-        Value = Mathf.Clamp(Value, _minValue, MaxValue);
-
+        Value = Mathf.Clamp(Value - damage, _minValue, MaxValue);
         Changed?.Invoke();
     }
 }
