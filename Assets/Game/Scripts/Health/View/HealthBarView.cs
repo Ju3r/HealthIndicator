@@ -13,14 +13,13 @@ public class HealthBarView : HealthView
         Init();
     }
 
-    public override void UpdateUI()
+    private void Init()
     {
-        _slider.value = Health.Value;
+        _slider.value = Health.Value / Health.MaxValue;
     }
 
-    protected virtual void Init()
+    public override void UpdateUI()
     {
-        _slider.maxValue = Health.MaxValue;
-        _slider.value = _slider.maxValue;
+        _slider.value = Health.Value / Health.MaxValue;
     }
 }

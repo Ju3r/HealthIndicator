@@ -6,12 +6,12 @@ public abstract class HealthView : MonoBehaviour
 
     private void OnEnable()
     {
-        Health.HasChanged += UpdateUI;
+        Health.Changed += UpdateUI;
     }
 
     private void OnDisable()
     {
-        Health.HasChanged -= UpdateUI;
+        Health.Changed -= UpdateUI;
     }
 
     private void Start()

@@ -1434,7 +1434,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: {fileID: 950839374}
   _transitionSpeed: 2
-  _minInaccuracy: 0.01
 --- !u!1 &1928276326
 GameObject:
   m_ObjectHideFlags: 0
